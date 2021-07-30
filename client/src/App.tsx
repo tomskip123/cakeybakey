@@ -53,7 +53,7 @@ function App() {
 
   async function handleDelete(cake: any) {
     try {
-      const result = await fetch(`http://localhost/api/cake/${cake.id}`, { method: 'DELETE', });
+      const result = await fetch(`/api/cake/${cake.id}`, { method: 'DELETE', });
       setCakes(await getCakes());
     } catch (e) {
       alert(e.message);
@@ -76,13 +76,13 @@ function App() {
 
       if (!(formValue as any).id) {
 
-        const result = await fetch('http://localhost/api/cake', {
+        const result = await fetch('/api/cake', {
           method: 'POST',
           body: fd
         }).catch(e => console.log(e));
       } else {
 
-        const result = await fetch(`http://localhost/api/cake/${(formValue as any).id}`, {
+        const result = await fetch(`/api/cake/${(formValue as any).id}`, {
           method: 'PUT',
           body: fd
         }).catch(e => console.log(e));
