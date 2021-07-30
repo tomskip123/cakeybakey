@@ -32,7 +32,7 @@ class CakeController {
     try {
       const data = JSON.parse(req.body.data);
 
-      data.imageUrl = `http://localhost/api/${(req as any).file.filename}`
+      data.imageUrl = `${(req as any).file.filename}`
 
       const cakes: Cake = await this.cakeService.addCake(data);
 
@@ -54,7 +54,7 @@ class CakeController {
       const data = JSON.parse(req.body.data);
 
       if (req?.file?.filename) {
-        data.imageUrl = `http://localhost/api/${(req as any).file.filename}`
+        data.imageUrl = `${(req as any).file.filename}`
       }
 
       const cakes = await this.cakeService.updateCake(data);

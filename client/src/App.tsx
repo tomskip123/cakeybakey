@@ -116,7 +116,7 @@ function App() {
                   {
                     cakes?.length > 0 ? cakes.map((cake: any) =>
                       <Grid item xs={4} style={{ cursor: 'pointer' }}>
-                        <img src={cake.imageUrl} style={{ width: '100%' }} />
+                        <img src={`/api/` + cake.imageUrl} style={{ width: '100%' }} />
                         <div style={{ textAlign: 'left' }}>
                           <Typography variant="body1">{cake.name}</Typography>
                           <Typography variant="body2">{cake.comment}</Typography>
