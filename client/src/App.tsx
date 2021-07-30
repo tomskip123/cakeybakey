@@ -1,21 +1,25 @@
 import './App.css';
-import { Grid, Typography } from '@material-ui/core';
+import { Container, Grid, Typography, Paper } from '@material-ui/core';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Typography variant="h1">
-          Welcome to cakey!
-        </Typography>
+        <Container maxWidth="md">
+          <Typography style={{marginBottom: 50}} variant="h1">
+            Welcome to cakey!
+          </Typography>
+          <Paper >
+            <Grid container>
 
-        <Grid style={{ padding: '20px 0 20px 0' }} container>
+              <Grid item>
+                <h1>welcome</h1>
+              </Grid>
 
-          <Grid item>
-            
-          </Grid>
+            </Grid>
+          </Paper>
 
-        </Grid>
+        </Container>
       </header>
     </div>
   );

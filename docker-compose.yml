@@ -7,13 +7,33 @@ services:
     ports:
       - '80:80'
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./api/nginx.conf:/etc/nginx/nginx.conf
     restart: 'unless-stopped'
     networks:
       - backend
+
+  client:
+    build:
+      context: ./client/
+      target: development-build-stage
+      dockerfile: Dockerfile
+    container_name: client
+    ports:
+      - '3001:3000'
+    volumes:
+      - ./client/:/app
+      - /app/node_modules
+    restart: 'unless-stopped'
+    networks:
+      - backend
+    links:
+      - server
+    depends_on:
+      - server
+
   server:
     build:
-      context: ./
+      context: ./api/
       target: development-build-stage
       dockerfile: Dockerfile
     container_name: server
@@ -25,7 +45,7 @@ services:
       MYSQL_HOST: mysql
       MYSQL_DATABASE: sequelize
     volumes:
-      - ./:/app
+      - ./api/:/app
       - /app/node_modules
     restart: 'unless-stopped'
     networks:
