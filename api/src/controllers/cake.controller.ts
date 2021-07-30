@@ -73,7 +73,6 @@ class CakeController {
    */
   public deleteCake = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      console.log(req.params);
       const cakes: number = await this.cakeService.deleteCake(+req.params.id);
 
       res.json(cakes);
