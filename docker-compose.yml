@@ -44,6 +44,7 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_HOST: mysql
       MYSQL_DATABASE: sequelize
+      PORT: 3000
     volumes:
       - ./api/:/app
       - /app/node_modules

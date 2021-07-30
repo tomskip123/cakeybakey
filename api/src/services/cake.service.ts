@@ -16,11 +16,19 @@ class CakeService {
   }
 
   async deleteCake(id: any): Promise<number> {
-    return await this.cakes.destroy(id);
+    return await this.cakes.destroy({
+      where: {
+        id: id
+      }
+    });
   }
 
   async updateCake(body: any): Promise<any> {
-    return await this.cakes.update(body.id, body);
+    return await this.cakes.update(body, {
+      where: {
+        id: body.id
+      }
+    });
   }
 
 

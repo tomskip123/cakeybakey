@@ -50,6 +50,7 @@ class App {
   }
 
   private initializeMiddlewares() {
+    this.app.use(express.static('uploads'))
     this.app.use(morgan(config.get('log.format'), { stream }));
     this.app.use(cors({ origin: config.get('cors.origin'), credentials: config.get('cors.credentials') }));
     this.app.use(hpp());

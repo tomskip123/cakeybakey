@@ -30,7 +30,11 @@ class CakeController {
    */
   public create = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const cakes: Cake = await this.cakeService.addCake(req.body);
+      const data = JSON.parse(req.body.data);
+
+      data.imageUrl = `http://localhost/api/${(req as any).file.filename}`
+
+      const cakes: Cake = await this.cakeService.addCake(data);
 
       res.json(cakes);
     } catch (error) {
@@ -44,9 +48,16 @@ class CakeController {
    * @param res 
    * @param next 
    */
-  public update = async (req: Request, res: Response, next: NextFunction) => {
+  public update = async (req: any, res: Response, next: NextFunction) => {
     try {
-      const cakes = await this.cakeService.updateCake(req.body);
+
+      const data = JSON.parse(req.body.data);
+
+      if (req?.file?.filename) {
+        data.imageUrl = `http://localhost/api/${(req as any).file.filename}`
+      }
+
+      const cakes = await this.cakeService.updateCake(data);
 
       res.json(cakes);
     } catch (error) {
@@ -62,7 +73,8 @@ class CakeController {
    */
   public deleteCake = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const cakes: number = await this.cakeService.deleteCake(req.body.id);
+      console.log(req.params);
+      const cakes: number = await this.cakeService.deleteCake(+req.params.id);
 
       res.json(cakes);
     } catch (error) {
