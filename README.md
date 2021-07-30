@@ -36,3 +36,15 @@ something I came across when running this is the that if docker creates the fold
 ## time spent
 overall this took me 4 hours. I wanted to make sure I could include everything I could think of.
 if you have any improvements please let me know.
+
+## database
+the database is a mysql docker container everything should just work with a docker-compose up
+
+if for some reason one of them fails, this is mostly due to one service being start before the db has been set up.
+
+to ensure this doesn't happen, run the db first then docker-copmose up
+
+like this
+
+`docker-compose up -d mysql`
+`docker-compose up -d` // start up silently (-d)
