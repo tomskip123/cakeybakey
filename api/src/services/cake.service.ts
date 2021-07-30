@@ -15,6 +15,15 @@ class CakeService {
     return cake;
   }
 
+  async deleteCake(id: any): Promise<number> {
+    return await this.cakes.destroy(id);
+  }
+
+  async updateCake(body: any): Promise<any> {
+    return await this.cakes.update(body.id, body);
+  }
+
+
 }
 
 export default CakeService;

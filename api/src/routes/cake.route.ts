@@ -13,6 +13,9 @@ class CakeRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.cakeController.index);
+    this.router.put(`${this.path}/:id`, this.cakeController.update);
+    this.router.delete(`${this.path}/:id`, this.cakeController.deleteCake);
+    this.router.post(`${this.path}`, this.cakeController.create);
   }
 }
 
